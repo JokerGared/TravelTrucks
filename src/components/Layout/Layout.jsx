@@ -1,22 +1,26 @@
 import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Container from "../Container/Container";
+import { Outlet, useLocation } from "react-router-dom";
 import s from "./Layout.module.css";
+import Header from "../Header/Header";
+import Container from "../Container/Container";
 
 const Layout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   return (
     <div className={s.layout}>
       <Header />
       <main>
-        <Container>
-          <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
+          {isHomePage ? (
             <Outlet />
-          </Suspense>
-        </Container>
+          ) : (
+            <Container>
+              <Outlet />
+            </Container>
+          )}
+        </Suspense>
       </main>
-      <Footer />
     </div>
   );
 };
