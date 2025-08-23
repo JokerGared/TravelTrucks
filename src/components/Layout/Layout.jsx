@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import s from "./Layout.module.css";
 import Header from "../Header/Header";
 import Container from "../Container/Container";
+import Loader from "../Loader/Loader";
 
 const Layout = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const Layout = () => {
     <div className={s.layout}>
       <Header />
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           {isHomePage ? (
             <Outlet />
           ) : (

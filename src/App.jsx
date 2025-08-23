@@ -14,8 +14,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="catalog" element={<TrucksPage />} />
-        <Route path="catalog/:id" element={<TruckPage />}>
+        <Route path="campers" element={<TrucksPage />} />
+        <Route path="campers/:id" element={<TruckPage />}>
           <Route index element={<Navigate to="features" replace />} />
           <Route path="features" element={<Features />} />
           <Route path="reviews" element={<Reviews />} />
